@@ -10,6 +10,7 @@
 #import "CoreDateManage.h"
 #import "Player.h"
 #import "AddViewController.h"
+#import "ChangeViewController.h"
 @interface TeamTableViewController () {
     NSArray *playerArray;
 }
@@ -18,10 +19,15 @@
 
 @implementation TeamTableViewController
 
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    playerArray = [[CoreDateManage shareInstance] fetchAllPlayersFromTeamName:_teamName];
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    playerArray = [[CoreDateManage shareInstance] fetchListWithEntityName:@"Player"];
     
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addPlayerAction)];
     
@@ -72,16 +78,16 @@
 }
 
 
-/*
-// Override to support conditional editing of the table view.
+
+
+
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
-// Override to support editing the table view.
+
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
@@ -90,13 +96,21 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
 
-/*
-// Override to support rearranging the table view.
+
+
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
 }
-*/
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ChangeViewController *changeVC = [[ChangeViewController alloc] initWithNibName:@"ChangeViewController" bundle:nil];
+    changeVC.player =  [playerArray objectAtIndex:indexPath.row];
+    
+    [self.navigationController pushViewController:changeVC animated:YES];
+   
+}
 
 /*
 // Override to support conditional rearranging of the table view.
@@ -106,14 +120,7 @@
 }
 */
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
 
 @end

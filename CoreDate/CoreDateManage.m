@@ -115,7 +115,7 @@ static AppDelegate *appDelegate;
     return playerObject;
 }
 
-//查询全部
+//查询Entity 全部数据
 - (NSArray *)fetchListWithEntityName:(NSString *)name
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -129,5 +129,26 @@ static AppDelegate *appDelegate;
     return array;
 }
 
+// 查询球队的所有球员
+- (NSArray *)fetchAllPlayersFromTeamName:(NSString *)teamName {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Player"];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"teamName == %@",teamName];
+    
+    //按照升序 查询
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"age" ascending:YES];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    
+    NSError *error;
+    NSArray *playerArray =  [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    return playerArray;
+}
+
+
+
+- (BOOL) changePlayerInfo:(Player *)playerInfo {
+    
+    return  NO;
+}
 
 @end

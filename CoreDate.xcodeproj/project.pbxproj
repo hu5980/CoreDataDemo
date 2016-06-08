@@ -23,6 +23,8 @@
 		BC26F2E41D06802400DD4325 /* TeamTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC26F2E31D06802400DD4325 /* TeamTableViewController.m */; };
 		BC26F2E81D06BC8700DD4325 /* CoreDateManage.m in Sources */ = {isa = PBXBuildFile; fileRef = BC26F2E71D06BC8700DD4325 /* CoreDateManage.m */; };
 		BC26F2EB1D06C37800DD4325 /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC26F2EA1D06C37800DD4325 /* AddViewController.m */; };
+		BCF406971D07C70A00B3A63C /* ChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF406951D07C70A00B3A63C /* ChangeViewController.m */; };
+		BCF406981D07C70A00B3A63C /* ChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF406961D07C70A00B3A63C /* ChangeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,9 @@
 		BC26F2E71D06BC8700DD4325 /* CoreDateManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDateManage.m; sourceTree = "<group>"; };
 		BC26F2E91D06C37800DD4325 /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		BC26F2EA1D06C37800DD4325 /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
+		BCF406941D07C70A00B3A63C /* ChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeViewController.h; sourceTree = "<group>"; };
+		BCF406951D07C70A00B3A63C /* ChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeViewController.m; sourceTree = "<group>"; };
+		BCF406961D07C70A00B3A63C /* ChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +145,9 @@
 				BC26F2A31D0578D600DD4325 /* ViewController.m */,
 				BC26F2E21D06802400DD4325 /* TeamTableViewController.h */,
 				BC26F2E31D06802400DD4325 /* TeamTableViewController.m */,
+				BCF406941D07C70A00B3A63C /* ChangeViewController.h */,
+				BCF406951D07C70A00B3A63C /* ChangeViewController.m */,
+				BCF406961D07C70A00B3A63C /* ChangeViewController.xib */,
 				BC26F2E61D06BC8700DD4325 /* CoreDateManage.h */,
 				BC26F2E71D06BC8700DD4325 /* CoreDateManage.m */,
 				BC26F2E91D06C37800DD4325 /* AddViewController.h */,
@@ -285,6 +293,7 @@
 			files = (
 				BC26F2AF1D0578D600DD4325 /* LaunchScreen.storyboard in Resources */,
 				BC26F2AC1D0578D600DD4325 /* Assets.xcassets in Resources */,
+				BCF406981D07C70A00B3A63C /* ChangeViewController.xib in Resources */,
 				BC26F2A71D0578D600DD4325 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +321,7 @@
 			files = (
 				BC26F2E01D0667FF00DD4325 /* Team.m in Sources */,
 				BC26F2E81D06BC8700DD4325 /* CoreDateManage.m in Sources */,
+				BCF406971D07C70A00B3A63C /* ChangeViewController.m in Sources */,
 				BC26F2EB1D06C37800DD4325 /* AddViewController.m in Sources */,
 				BC26F2AA1D0578D600DD4325 /* CoreDate.xcdatamodeld in Sources */,
 				BC26F2A41D0578D600DD4325 /* ViewController.m in Sources */,
@@ -544,6 +554,7 @@
 				BC26F2CB1D0578D600DD4325 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BC26F2CC1D0578D600DD4325 /* Build configuration list for PBXNativeTarget "CoreDateTests" */ = {
 			isa = XCConfigurationList;
@@ -552,6 +563,7 @@
 				BC26F2CE1D0578D600DD4325 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BC26F2CF1D0578D600DD4325 /* Build configuration list for PBXNativeTarget "CoreDateUITests" */ = {
 			isa = XCConfigurationList;
@@ -560,6 +572,7 @@
 				BC26F2D11D0578D600DD4325 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

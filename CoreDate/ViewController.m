@@ -33,8 +33,8 @@
     [[CoreDateManage shareInstance] createTeamWithName:@"尼克斯" city:@"纽约" menberNum:10];
     [[CoreDateManage shareInstance] createTeamWithName:@"火箭" city:@"休斯敦" menberNum:12];
     
-    [[CoreDateManage shareInstance] createPlayEithName:@"科比" withPlayerAge:38 withTeamName:@"火箭"];
-    [[CoreDateManage shareInstance] createPlayEithName:@"姚明" withPlayerAge:38 withTeamName:@"火箭"];
+    [[CoreDateManage shareInstance] createPlayEithName:@"科比" withPlayerAge:36 withTeamName:@"火箭"];
+    [[CoreDateManage shareInstance] createPlayEithName:@"姚明" withPlayerAge:30 withTeamName:@"火箭"];
     [[CoreDateManage shareInstance] createPlayEithName:@"麦迪" withPlayerAge:38 withTeamName:@"火箭"];
     
     [appDelegate saveContext];
