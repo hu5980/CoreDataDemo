@@ -36,8 +36,7 @@
     [[CoreDateManage shareInstance] createPlayEithName:@"科比" withPlayerAge:36 withTeamName:@"火箭"];
     [[CoreDateManage shareInstance] createPlayEithName:@"姚明" withPlayerAge:30 withTeamName:@"火箭"];
     [[CoreDateManage shareInstance] createPlayEithName:@"麦迪" withPlayerAge:38 withTeamName:@"火箭"];
-    
-    [appDelegate saveContext];
+
     
     NSArray *teamArray =  [[CoreDateManage shareInstance] fetchListWithEntityName:@"Team"];
     NSArray *playerArray = [[CoreDateManage shareInstance] fetchListWithEntityName:@"Player"];

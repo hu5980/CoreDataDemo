@@ -7,6 +7,7 @@
 //
 
 #import "ChangeViewController.h"
+#import "CoreDateManage.h"
 
 @interface ChangeViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -25,6 +26,9 @@
 }
 
 - (IBAction)changePlayerAge:(UIButton *)sender {
+    _player.age = [ NSNumber numberWithInteger:[_ageTextField.text integerValue] ];
+    
+    [[CoreDateManage shareInstance ] updatePlayerInfo:_player];
     
 }
 

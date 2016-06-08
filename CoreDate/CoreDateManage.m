@@ -39,6 +39,7 @@ static AppDelegate *appDelegate;
         [teamObject setValue:teamName forKey:@"teamName"];
         [teamObject setValue:teamCity forKey:@"teamCity"];
         [teamObject setValue:[NSNumber numberWithInteger:memberNum] forKey:@"teamMemberNum"];
+        [appDelegate saveContext];
         return YES;
     }else{
         return NO;
@@ -47,7 +48,7 @@ static AppDelegate *appDelegate;
 
 // 2.第二种插入
 - (BOOL)createPlayEithName:(NSString *)playerName withPlayerAge:(NSInteger) age withTeamName:(NSString *)teamName{
-    if (!playerName || !age) {
+    if (!playerName || !age || !teamName) {
         return NO;
     }
     Player *player = [self getPlayerInfoByName:playerName withTeamName:teamName];
@@ -56,6 +57,8 @@ static AppDelegate *appDelegate;
         [player setName:playerName];
         [player setAge:[NSNumber numberWithInteger:age]];
         [player setTeamName:teamName];
+        
+        [appDelegate saveContext];
         return YES;
     }else{
         return NO;
@@ -145,10 +148,52 @@ static AppDelegate *appDelegate;
 }
 
 
+- (BOOL) updatePlayerInfo:(Player *)playerInfo {
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",playerInfo.name];
+    
+    //首先你需要建立一个request
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Player" inManagedObjectContext:managedObjectContext]];
+    [request setPredicate:predicate];//这里相当于sqlite中的查询条件，具体格式参考苹果文档
+    
 
-- (BOOL) changePlayerInfo:(Player *)playerInfo {
+    NSError *error = nil;
+    NSArray *result = [managedObjectContext executeFetchRequest:request error:&error];//这里获取到的是一个数组，你需要取出你要更新的那个obj
+    for (Player *player in result) {
+        player.age = playerInfo.age;
+    }
+    
+    //保存
+    if ([managedObjectContext save:&error]) {
+        //更新成功
+        NSLog(@"更新成功");
+    }
     
     return  NO;
+}
+
+
+- (BOOL) deletePlayer:(Player *)playerInfo {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",playerInfo.name];
+    
+    //首先你需要建立一个request
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Player" inManagedObjectContext:managedObjectContext]];
+    [request setPredicate:predicate];//这里相当于sqlite中的查询条件，具体格式参考苹果文档
+    
+    
+    NSError *error = nil;
+    NSArray *result = [managedObjectContext executeFetchRequest:request error:&error];//这里获取到的是一个数组，你需要取出你要更新的那个obj
+    if (result.count && !error && result) {
+        for (NSManagedObject *obj in result)
+        {
+            [managedObjectContext deleteObject:obj];
+        }
+        
+        return YES;
+    }
+    return NO;
 }
 
 @end

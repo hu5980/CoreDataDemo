@@ -169,6 +169,9 @@
                                 <state key="normal" title="添加">
                                     <color key="titleColor" red="0.16078431369999999" green="0.80000000000000004" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="addPlayerTargetAction:" destination="c6z-uw-sgg" eventType="touchUpInside" id="eH1-Is-FHc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -7,7 +7,7 @@
 //
 
 #import "AddViewController.h"
-
+#import "CoreDateManage.h"
 @interface AddViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *playerNameTextField;
 
@@ -22,6 +22,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+- (IBAction)addPlayerTargetAction:(UIButton *)sender {
+   BOOL insertSuccess =  [[CoreDateManage shareInstance] createPlayEithName:_playerNameTextField.text withPlayerAge:[_playerAgeTextField.text integerValue]withTeamName:_teamName];
+    
+    if (insertSuccess) {
+        NSLog(@"添加成功");
+        return;
+    }
+    
+    NSLog(@"添加失败");
+
+    
 }
 
 - (void)didReceiveMemoryWarning {

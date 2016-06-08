@@ -11,9 +11,14 @@
 #import "Player.h"
 #import "AddViewController.h"
 #import "ChangeViewController.h"
-@interface TeamTableViewController () {
-    NSArray *playerArray;
-}
+
+@interface TeamTableViewController ()<NSFetchedResultsControllerDelegate> {
+//    NSArray *playerArray;
+    NSManagedObjectContext *managedObjectContext;
+  }
+
+@property (nonatomic,strong)  NSFetchedResultsController *fetchedResultsController;
+
 
 @end
 
@@ -22,16 +27,23 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    playerArray = [[CoreDateManage shareInstance] fetchAllPlayersFromTeamName:_teamName];
+    //可以用这种方法获取数据
+ //   playerArray = [[CoreDateManage shareInstance] fetchAllPlayersFromTeamName:_teamName];
 
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate ;
+    managedObjectContext = appDelegate.managedObjectContext;
+
+    
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addPlayerAction)];
     
     self.navigationItem.rightBarButtonItem = rightItem;
+    
+    [self fetchedResultsControllerWithTeamName:_teamName];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -44,6 +56,7 @@
 - (void)addPlayerAction {
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     AddViewController *addVC = [story instantiateViewControllerWithIdentifier:@"AddViewController"];
+    addVC.teamName = _teamName;
     [self.navigationController pushViewController:addVC animated:YES];
 }
 
@@ -61,7 +74,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of rows
-    return playerArray.count;
+//    return playerArray.count;
+    
+    return [[[self.fetchedResultsController sections] objectAtIndex:section] numberOfObjects];
 }
 
 
@@ -70,15 +85,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"playerName"];
     if (nil == cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"playerName"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"playerName"];
     }
-    Player *player = [playerArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = player.name  ;
+//    Player *player = [playerArray objectAtIndex:indexPath.row];
+//    cell.textLabel.text = player.name  ;
+    
+    [self configureCell:cell atIndexPath:indexPath];
+    
     return cell;
 }
-
-
-
 
 
 
@@ -87,11 +102,14 @@
 }
 
 
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+         Player *playerObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        
+        [[CoreDateManage shareInstance] deletePlayer:playerObject];
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
@@ -106,10 +124,57 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ChangeViewController *changeVC = [[ChangeViewController alloc] initWithNibName:@"ChangeViewController" bundle:nil];
-    changeVC.player =  [playerArray objectAtIndex:indexPath.row];
+    
+    Player *playerObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    changeVC.player = playerObject;
+    
+//  changeVC.player =  [playerArray objectAtIndex:indexPath.row];
     
     [self.navigationController pushViewController:changeVC animated:YES];
    
+}
+
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    Player *playerObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = playerObject.name;
+    cell.detailTextLabel.text = [playerObject.age stringValue];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+}
+
+
+// 通过 NSFetchedResultsController 这个类可以获取数据
+- (NSFetchedResultsController *)fetchedResultsControllerWithTeamName:(NSString *) teamName {
+    if (nil != _fetchedResultsController) {
+        return _fetchedResultsController;
+    }
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *playerEntity = [NSEntityDescription entityForName:@"Player" inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:playerEntity];
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"age"ascending:YES];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"teamName == %@", teamName];
+    [fetchRequest setPredicate:predicate];
+    [fetchRequest setFetchBatchSize:20];
+    
+    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:@"Players"];
+    _fetchedResultsController.delegate = self;
+    
+    [NSFetchedResultsController deleteCacheWithName:nil];
+    NSError *error = NULL;
+    if (![_fetchedResultsController performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    return _fetchedResultsController;
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
+    [self.tableView reloadData];
 }
 
 /*

@@ -66,6 +66,16 @@
  *
  *  @return YES OR NO 
  */
-- (BOOL) changePlayerInfo:(Player *)playerInfo ;
+
+- (BOOL) updatePlayerInfo:(Player *)playerInfo;
+
+/**
+ *  删除球员
+ *
+ *  @param playerInfo playerInfo Player Entity
+ *
+ *  @return YES OR NO 
+ */
+- (BOOL) deletePlayer:(Player *)playerInfo;
 
 @end
