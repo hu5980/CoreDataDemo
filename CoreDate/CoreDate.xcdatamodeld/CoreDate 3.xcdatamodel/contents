@@ -3,6 +3,7 @@
     <entity name="Player" representedClassName="Player" syncable="YES">
         <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="players" inverseEntity="Team" syncable="YES"/>
     </entity>
     <entity name="Team" representedClassName="Team" syncable="YES">
@@ -12,7 +13,7 @@
         <relationship name="players" optional="YES" toMany="YES" maxCount="15" deletionRule="Nullify" destinationEntity="Player" inverseName="team" inverseEntity="Player" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Player" positionX="-45" positionY="9" width="128" height="90"/>
+        <element name="Player" positionX="-45" positionY="9" width="128" height="105"/>
         <element name="Team" positionX="-18" positionY="54" width="128" height="105"/>
     </elements>
 </model>

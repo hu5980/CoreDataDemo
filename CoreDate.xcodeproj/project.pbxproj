@@ -16,6 +16,13 @@
 		BC26F2AF1D0578D600DD4325 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC26F2AD1D0578D600DD4325 /* LaunchScreen.storyboard */; };
 		BC26F2BA1D0578D600DD4325 /* CoreDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC26F2B91D0578D600DD4325 /* CoreDateTests.m */; };
 		BC26F2C51D0578D600DD4325 /* CoreDateUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC26F2C41D0578D600DD4325 /* CoreDateUITests.m */; };
+		BC26F2D91D06652500DD4325 /* Player+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BC26F2D61D06652500DD4325 /* Player+CoreDataProperties.m */; };
+		BC26F2DA1D06652500DD4325 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = BC26F2D81D06652500DD4325 /* Player.m */; };
+		BC26F2DF1D0667FF00DD4325 /* Team+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BC26F2DC1D0667FF00DD4325 /* Team+CoreDataProperties.m */; };
+		BC26F2E01D0667FF00DD4325 /* Team.m in Sources */ = {isa = PBXBuildFile; fileRef = BC26F2DE1D0667FF00DD4325 /* Team.m */; };
+		BC26F2E41D06802400DD4325 /* TeamTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC26F2E31D06802400DD4325 /* TeamTableViewController.m */; };
+		BC26F2E81D06BC8700DD4325 /* CoreDateManage.m in Sources */ = {isa = PBXBuildFile; fileRef = BC26F2E71D06BC8700DD4325 /* CoreDateManage.m */; };
+		BC26F2EB1D06C37800DD4325 /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC26F2EA1D06C37800DD4325 /* AddViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +60,22 @@
 		BC26F2C01D0578D600DD4325 /* CoreDateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC26F2C41D0578D600DD4325 /* CoreDateUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDateUITests.m; sourceTree = "<group>"; };
 		BC26F2C61D0578D600DD4325 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC26F2D51D06652500DD4325 /* Player+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Player+CoreDataProperties.h"; sourceTree = "<group>"; };
+		BC26F2D61D06652500DD4325 /* Player+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Player+CoreDataProperties.m"; sourceTree = "<group>"; };
+		BC26F2D71D06652500DD4325 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		BC26F2D81D06652500DD4325 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		BC26F2DB1D0667FF00DD4325 /* Team+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Team+CoreDataProperties.h"; sourceTree = "<group>"; };
+		BC26F2DC1D0667FF00DD4325 /* Team+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Team+CoreDataProperties.m"; sourceTree = "<group>"; };
+		BC26F2DD1D0667FF00DD4325 /* Team.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Team.h; sourceTree = "<group>"; };
+		BC26F2DE1D0667FF00DD4325 /* Team.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Team.m; sourceTree = "<group>"; };
+		BC26F2E11D067BDD00DD4325 /* CoreDate 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDate 2.xcdatamodel"; sourceTree = "<group>"; };
+		BC26F2E21D06802400DD4325 /* TeamTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamTableViewController.h; sourceTree = "<group>"; };
+		BC26F2E31D06802400DD4325 /* TeamTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamTableViewController.m; sourceTree = "<group>"; };
+		BC26F2E51D069E4B00DD4325 /* CoreDate 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDate 3.xcdatamodel"; sourceTree = "<group>"; };
+		BC26F2E61D06BC8700DD4325 /* CoreDateManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDateManage.h; sourceTree = "<group>"; };
+		BC26F2E71D06BC8700DD4325 /* CoreDateManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDateManage.m; sourceTree = "<group>"; };
+		BC26F2E91D06C37800DD4325 /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
+		BC26F2EA1D06C37800DD4325 /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +106,14 @@
 		BC26F2901D0578D500DD4325 = {
 			isa = PBXGroup;
 			children = (
+				BC26F2DB1D0667FF00DD4325 /* Team+CoreDataProperties.h */,
+				BC26F2DC1D0667FF00DD4325 /* Team+CoreDataProperties.m */,
+				BC26F2DD1D0667FF00DD4325 /* Team.h */,
+				BC26F2DE1D0667FF00DD4325 /* Team.m */,
+				BC26F2D51D06652500DD4325 /* Player+CoreDataProperties.h */,
+				BC26F2D61D06652500DD4325 /* Player+CoreDataProperties.m */,
+				BC26F2D71D06652500DD4325 /* Player.h */,
+				BC26F2D81D06652500DD4325 /* Player.m */,
 				BC26F29B1D0578D600DD4325 /* CoreDate */,
 				BC26F2B81D0578D600DD4325 /* CoreDateTests */,
 				BC26F2C31D0578D600DD4325 /* CoreDateUITests */,
@@ -107,6 +138,12 @@
 				BC26F2A01D0578D600DD4325 /* AppDelegate.m */,
 				BC26F2A21D0578D600DD4325 /* ViewController.h */,
 				BC26F2A31D0578D600DD4325 /* ViewController.m */,
+				BC26F2E21D06802400DD4325 /* TeamTableViewController.h */,
+				BC26F2E31D06802400DD4325 /* TeamTableViewController.m */,
+				BC26F2E61D06BC8700DD4325 /* CoreDateManage.h */,
+				BC26F2E71D06BC8700DD4325 /* CoreDateManage.m */,
+				BC26F2E91D06C37800DD4325 /* AddViewController.h */,
+				BC26F2EA1D06C37800DD4325 /* AddViewController.m */,
 				BC26F2A51D0578D600DD4325 /* Main.storyboard */,
 				BC26F2AB1D0578D600DD4325 /* Assets.xcassets */,
 				BC26F2AD1D0578D600DD4325 /* LaunchScreen.storyboard */,
@@ -273,10 +310,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC26F2E01D0667FF00DD4325 /* Team.m in Sources */,
+				BC26F2E81D06BC8700DD4325 /* CoreDateManage.m in Sources */,
+				BC26F2EB1D06C37800DD4325 /* AddViewController.m in Sources */,
 				BC26F2AA1D0578D600DD4325 /* CoreDate.xcdatamodeld in Sources */,
 				BC26F2A41D0578D600DD4325 /* ViewController.m in Sources */,
 				BC26F2A11D0578D600DD4325 /* AppDelegate.m in Sources */,
 				BC26F29E1D0578D600DD4325 /* main.m in Sources */,
+				BC26F2DF1D0667FF00DD4325 /* Team+CoreDataProperties.m in Sources */,
+				BC26F2DA1D06652500DD4325 /* Player.m in Sources */,
+				BC26F2E41D06802400DD4325 /* TeamTableViewController.m in Sources */,
+				BC26F2D91D06652500DD4325 /* Player+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,9 +567,11 @@
 		BC26F2A81D0578D600DD4325 /* CoreDate.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				BC26F2E51D069E4B00DD4325 /* CoreDate 3.xcdatamodel */,
+				BC26F2E11D067BDD00DD4325 /* CoreDate 2.xcdatamodel */,
 				BC26F2A91D0578D600DD4325 /* CoreDate.xcdatamodel */,
 			);
-			currentVersion = BC26F2A91D0578D600DD4325 /* CoreDate.xcdatamodel */;
+			currentVersion = BC26F2E51D069E4B00DD4325 /* CoreDate 3.xcdatamodel */;
 			path = CoreDate.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
